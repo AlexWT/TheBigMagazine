@@ -1,0 +1,784 @@
+/*
+	Theme Name: The Best News
+	Author: Alexander Dimitrov
+	Author URI: http://gazpo.com
+
+	Description: The Best News - Create your own news portal, powered by WordPress CMS. Setup how you want it to look, what colors to be here and what types of news to show. Add categories, make daily messages, many places to add links or banners. Using plugins, you can be sure that most of the functionality of this theme can be reused on other (if they are codded to support it)
+	Version 1.0
+
+	Tags: two-columns, left-sidebar, flexible-width, custom-background, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, translation-ready
+
+	License: GNU General Public License, v2 (or newer)
+	License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+	 ******************************************************************
+	 *
+	 * The Best News WordPress Theme, Copyright (C) 2013 Alexander Dimitrov
+	 *
+	 * This program is free software; you can redistribute it and/or modify
+	 * it under the terms of the GNU General Public License as published by
+	 * the Free Software Foundation; either version 2 of the License, or
+	 * (at your option) any later version.
+	 * 
+	 * This program is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	 * GNU General Public License for more details.
+	 *
+	 ******************************************************************
+*/
+
+/**
+ * Table of contents
+ * -------------------------------
+ * 1. General Stylings
+ * 2. Header
+ *  2.1 Left Section
+ *  2.2 Logo
+ *  2.3 Search and Login section
+ *  2.4 Navigation
+ * 3. Page Content
+ *  3.1 Slider
+ * 4. Single page
+ *  4.1 Entry
+ * 5. Sidebar
+ * Latest. Additional Styles
+ */
+
+
+/**
+ * 1. General Stylings
+ * ============================================================
+ */
+body {
+	font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	overflow:scroll;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: "Droid Sans", "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+ul li {
+	/* Standart list image */
+	list-style-image: url("images/bullet.png");
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/**
+ * 2. Header
+ * ============================================================
+ */
+header#page-header {
+	background: #1670cc url("inc/images/header-overlay.png") no-repeat top center;
+	padding: 20px 0; 
+}
+
+/* PAGE DESCRIPTION SECTION */
+
+header#page-header .description,
+header#page-header .description a {
+	color: white;
+	font-size: 12px;
+}
+
+header#page-header .description p {
+	padding: 0;
+	margin: 0;
+}
+
+header#page-header .description .daily-message {
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+header#page-header .description .current-date,
+header#page-header .description .secoundary-navigation {
+	opacity: 0.3;
+}
+
+header#page-header .description .secoundary-navigation ul {
+	margin-top: 20px;
+	padding: 0;
+}
+
+header#page-header .description .secoundary-navigation ul li {
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+}
+
+/* LOGO */
+#branding h1.branding  {
+	text-indent: -9999px;	/* remove text */
+	margin-top: 0;
+	
+
+	/* The hard-codded image. */
+	background: transparent url("inc/images/logo-white-big.png") no-repeat top center;
+}
+
+
+#branding h1.branding a {
+	height: 76px;
+	display: block;
+}
+
+/* SEARCH AND LOGIN SECTION */
+.search-section .signup {
+	float: right;
+}
+
+.search-section .signup a {
+	color: white;
+}
+
+.search-section .signup .btn-signup {
+	border: #000 1px solid;
+	background: #444;
+	border-radius: 4px;
+	box-shadow: 0.5px 0.866px 1px 0px rgb( 0, 0, 0 );
+}
+
+.search-section .signup .btn-signup:active {
+	box-shadow: inset 0px 2px 3px 0px rgba( 0, 0, 0, 0.3 );
+}
+
+
+.search-section .signup .btn-signup:hover {
+	background: #555;
+}
+.search-section .searchform {
+	margin-top: 20px;
+	width: 60%;
+	clear: both;
+	float: right;
+}
+
+.search-section .searchform button {
+	background: #276cb4;
+	outline: none;
+}
+
+.search-section .searchform input,
+.search-section .searchform button {
+	border: none;
+	border-radius: 0 !important;
+	background: #1a5fa6;
+	color: white;
+}
+
+
+/* NAVIGATION */
+nav#page-navigation {
+	background: #262626;
+	border: black;
+	border-radius: 0;
+
+	box-shadow: inset 0 5px 10px #000, 0 8px 20px rgba(100, 100, 100, 0.3);
+}
+
+nav#page-navigation ul.nav li a {
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	-moz-transition:.2s linear; 
+	-webkit-transition:.2s linear; 
+	transition:.2s linear;
+}
+
+nav#page-navigation ul.nav li a:hover {
+	background-color: #1670CC ;
+	-moz-transition:.0s ease-out; 
+	-webkit-transition:.0s ease-out; 
+	transition:.0s ease-out;
+
+}
+
+nav#page-navigation ul.nav li.active a {
+	color: #343434;
+	background: white;
+}
+
+nav#page-navigation ul.nav .dropdown-menu {
+	padding: 0;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background: #333;
+	color: white;
+}
+
+nav#page-navigation ul.nav .dropdown-menu ul {
+	background: #262626;
+}
+
+nav#page-navigation ul.nav .dropdown-menu li:last-child a {
+	border-bottom: none;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+nav#page-navigation ul.nav li.dropdown.open {
+	background: #262626;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover {
+	background: #262626;
+}
+
+.navbar-default .navbar-nav>.open>a:focus {
+	background: #009cff
+}
+
+nav#page-navigation ul.nav li.dropdown ul a {
+	color: #fff;
+	font-weight: normal;
+	text-transform: none;
+	border-bottom: 1px solid #555;
+	padding: 10px 30px;
+}
+
+nav#page-navigation ul.nav li.dropdown ul a:hover {
+	color: white;
+	background: #009cff;
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu{
+	display: block;
+}
+
+
+/**
+ * 3. Page Content
+ * ============================================================
+ */
+#page-content {
+	/* Make the padding work on the outside of the content. 
+	 * That way it wont break the box and columns layout. */
+	box-sizing: content-box; 
+	padding: 20px;
+	background: white;
+
+	margin-top: -33px;
+	/*border: 8px solid rgba(0, 0, 0, 0.05);*/
+	border-radius: 10px;
+	box-shadow: 0 0 40px rgba(100, 100, 100, 0.2)
+}
+
+/* SLIDER */
+#carousel {
+	margin-bottom: 15px;
+}
+
+#carousel.carousel .item .carousel-caption {
+	text-align: left;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 20px 50px;
+	margin: 0;
+	left: 0;
+	right: auto;
+	margin-bottom: -20px;
+}
+
+#carousel.carousel .item .carousel-caption h2 {
+	margin: 0
+}
+
+#carousel.carousel .item .carousel-caption p {
+	margin-top: 20px;
+}
+
+#top-news {
+	overflow: hidden;
+}
+
+.news-wrapper {
+	box-shadow: inset 0 0 1px #000;
+	border-top: 8px solid #1670cc;
+}
+
+#top-news .section-heading  {
+	padding: 4px 10px 2px 10px;
+}
+
+#top-news .section-heading h3 {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 0 0 10px 0;
+	padding: 10px 0 10px 0;
+	color: black;
+	border-bottom: 1px solid #ddd;
+}
+
+
+#top-news ul {
+	padding: 0px;
+	margin-left: 0px;
+	
+}
+
+#top-news ul li {
+	padding: 0;
+	margin-left: 30px;
+}
+
+#top-news .new {
+	color: red;
+	margin-right: 3px;
+	font-weight: bold;
+}
+
+section.featured-categories {
+	border: 1px solid #ddd;
+	padding: 5px;
+	box-shadow: 0 5px 0 #f0f0f0;
+}
+
+section.featured-categories .section-header {
+	overflow: hidden;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+section.featured-categories .section-header a {
+	display: block;
+	float: right;
+}
+
+section.featured-categories .section-header .section-title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	float: left;
+}
+
+section.featured-categories .section-content {
+	overflow: hidden;
+}
+section.featured-categories .section-content .column {
+	border-right: 1px solid #f0f0f0;
+}
+
+section.featured-categories .section-content .column .categories-title {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+section.featured-categories .section-content .column .categories-title i {
+	padding-right: 10px;
+}
+
+section.featured-categories .section-content .column ul {
+	margin: 0;
+	padding: 0;
+
+}
+
+section.featured-categories .section-content .column ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+header.section-header.big {
+	background: url("images/pattern.png");
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.section-heading {
+	background: white;
+	display: inline-block;
+	margin: 0;
+	padding-right: 20px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: #2382e3;
+	font-family: "Droid Sans";
+}
+
+
+section.category-1 .featured-post .post-title {
+	margin: 0;
+	padding: 0;
+	line-height: 1em;
+}
+
+section.category-1 .featured-post .post-title a {
+	color: black;
+	font-weight: bold;
+}
+
+section.category-1 .featured-post .post-thumbnail img {
+	max-width: 100%;
+	height: auto;
+}
+
+section.category-1 .featured-post .post-thumbnail:hover {
+	opacity: 0.8;
+}
+
+.similar-posts ul {
+	padding: 0;
+}
+
+.similar-posts ul li {
+	list-style: none;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.similar-posts ul li a {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.similar-posts i {
+	color: #ccc;
+	font-size: 10px;
+	margin-left: 3pxpx;
+}
+
+.similar-posts .comments {
+	font-size: 10px;
+	font-weight: normal;
+}
+
+.post-content {
+	font-family: Georgia;
+}
+
+#three-categories .post-title {
+	margin-top: 0px;
+}
+
+#three-categories .post-title a {
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "droid sans";
+}
+
+#three-categories .similar-posts a {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+/**
+ * 4. Single page
+ * ============================================================
+ */
+
+/* Entry */
+.entry .entry-title {
+	font-weight: bolder;
+	margin: 0;
+}
+
+.entry .entry-thumbnail {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.entry .date-stamp,
+.entry .modified {
+	color: #aaa;
+}
+
+.entry-content {
+	font-family: Georgia;
+	font-size: 16px;
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h1,
+.entry-content h1,
+.entry-content h1,
+.entry-content h1 { 
+	font-weight: bold; 
+	text-transform: uppercase;
+}
+
+.entry-content h1 { font-size: 26px; }
+.entry-content h2 { font-size: 24px; }
+.entry-content h3 { font-size: 22px; }
+.entry-content h4 { font-size: 18px; }
+.entry-content h5 { font-size: 14px; }
+.entry-content h6 { font-size: 12px; }
+
+a.post-edit-link { color: red; }
+
+/**
+ * 5. Sidebar
+ * ============================================================
+ */
+
+aside#sidebar .widget-title {
+	background: #2382E3;
+	color: white;
+	margin: 0 0 20px 0;
+	padding: 5px 20px;
+	font-size: 18px;
+}
+
+aside#sidebar .widget {
+	margin-bottom: 20px;
+}
+
+aside#sidebar .widget ul {
+	margin: 0;
+	padding: 0;
+}
+
+aside#sidebar .widget ul li {
+	margin-left: 20px;
+}
+
+aside#sidebar .widget.widget_meta ul li,
+aside#sidebar .widget.widget_pages ul li,
+aside#sidebar .widget.widget_archive ul li {
+	display: inline-block;
+	width: 49%;
+	border-bottom: 1px solid #f0f0f0;
+	margin: 0;
+}
+
+/* Post Sidebar */
+
+aside#single-sidebar {
+	overflow: hidden;
+}
+
+aside#single-sidebar .widget ul {
+	margin: 0;
+	padding-left: 0;
+}
+
+aside#single-sidebar .widget ul li {
+	padding-left: 0;
+	margin: 0;	
+	list-style: none;
+	line-height: 18px;
+	margin-bottom: 10px;
+}
+
+aside#single-sidebar .widget .widget-title {
+	margin: 0;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+aside#single-sidebar .widget-area {
+	background: #f0f0f0;
+	padding: 10px;
+}
+
+/* Additional Styles */
+.message-box { 
+	display: block; 
+	background: #f0f0f0;
+	padding: 15px;
+	margin: 20px 0;
+	border: 1px solid #ccc;
+}
+
+.message-box::selection {
+	background: black;
+	color: white;
+}
+
+.message-box p:first-child {
+	margin-top: 0;
+}
+
+.message-box p:last-child {
+	margin-bottom: 0;
+}
+
+.message-box.blue {
+	background: #0096ff;
+	color: white;
+	border-bottom: 3px solid #168bdc;
+}
+
+.message-box.orange {
+	background: #ff6c00;
+	border-bottom: 3px solid #ff5400;
+	color:  white;
+}
+
+.message-box.green {
+	background: #28df1a;
+	border-bottom: 3px solid #22d814;
+	color:  white;
+}
+
+.message-box.red {
+	background: #FF706C;
+	color: white;
+	border-bottom: 3px solid #F2625E;
+}
+
+.message-box.magenta {
+	background: #ea3787;
+	border-bottom: 3px solid #dd2b7b;
+	color:  white;
+}
+
+.message-box.black {
+	background: #333333;
+	border-bottom: 3px solid #222222;
+	color:  white;
+}
+
+.message-box.white {
+	background: #ffffff;
+	border: 1px solid #f0f0f0;
+	color:  #555;
+}
+
+.modal-content {width: 300px;}
+
+#loginform label {
+	display: block;
+}
+#loginform .input {
+	border: 1px solid #ccc;
+	background: white;
+	min-width: 100%
+}
+
+#loginform .button-primary {
+	background: #333;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	width: 100%;
+	padding: 5px 0;
+}
+
+/* Large desktop */
+@media (max-width: 1200px) {
+	#top-news {
+		max-height: 332px ;
+	}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	#top-news {
+		height: auto
+	}
+
+	#top-news li {
+		width: 45%;
+		display: inline-block;
+		border-bottom: 1px solid #ddd;
+		padding: 0;
+		margin: 0;
+		height: auto !important;
+	}
+
+	.category-1 .similar-posts ul {
+		clear: both;
+	}
+	.category-1 .similar-posts ul li {
+		display: inline-block;
+		border-bottom: 1px solid #f0f0f0;
+	}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	#page-header section.heading {
+		padding: 0 20px;
+	}
+
+	#carousel.carousel .item .carousel-caption h2 {
+		font-size: 18px;
+	}
+
+	#top-news {
+		height: auto;
+		margin-bottom: 30px;
+	}
+	
+	#top-news li {
+		width: 44%;
+		display: inline-block;
+		border-bottom: 1px solid #ddd;
+		padding: 0;
+		margin: 0;
+		height: auto !important;
+		height: auto;
+	}
+
+	#three-categories .post-title a {
+		line-height: 12px;
+	}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	#top-news ul {
+		margin: 0;
+		padding: 0;
+	}
+	#top-news ul li {
+		width: auto;
+		display: inline-block;
+		border-bottom: 1px solid #ddd;
+		padding: 0;
+		margin: 0;
+		height: auto !important;
+		height: auto;
+	}
+
+	#branding,
+	.search-section {
+		width: 100%;
+		clear: both;
+		float: none;
+		text-align: center;
+	}
+
+	.search-section .signup {
+		float:none;
+	}
+
+	.search-section .searchform {
+		float: none;
+		margin: 10px auto;
+	}
+
+	.featured-categories .column {
+		width: 100%;
+	}
+
+	.category-1 .post-thumbnail  {
+		width: 100%;
+	}
+
+	.category-1 .post-title {
+		clear: both;
+	}
+}
