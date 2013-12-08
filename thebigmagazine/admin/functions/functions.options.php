@@ -163,7 +163,7 @@ $of_options[] = array(
 		"name"		=> __("Icon for the title", "thebigmag"),
 		"id"		=> 'top_news_icon',
 		"desc"		=> __("Place the icon class. You can find them all in a link at the documentation.", "thebigmag"),
-		"std"		=> "icon-star",
+		"std"		=> "fa fa-star",
 		"icon"		=> true,
 		"type"		=> "text"
 	);
@@ -330,6 +330,53 @@ $of_options[] = array(
 		"std"		=> "3"
 	);
 
+	/* -------------- LATEST POSTS ---------------- */
+
+	$of_options[] = array( 	
+		"name" 		=> "Section: Latest posts",
+		"desc" 		=> "",
+		"id" 		=> "latestPosts",
+		"std" 		=> __("<h3>Section: Latest posts</h3><p>The posts list displayed on home page. This is a blog like section with X amount of posts. No pagination is used.</p>"),
+		"icon" 		=> true,
+		"type" 		=> "info"
+	);
+
+	$of_options[] = array(
+		"name"		=> __("Text for today's news", "thebigmag"),
+		"id"		=> 'latestPosts-title',
+		"desc"		=> __("A list of the latest posts on the blog page. (news)", "thebigmag"),
+		"std"		=> __("Latest Posts", "thebigmag"),
+		"icon"		=> true,
+		"type"		=> "text"
+	);
+
+/*-----------------------------------------------------------------------------------*/
+/* Page Options */
+/*-----------------------------------------------------------------------------------*/
+
+$of_options[] = array( 	
+	"name" 		=> "Page Options",
+	"type" 		=> "heading",
+	"icon"		=> true
+);
+
+	// The settngs for the sidebar. What is returned from this option
+	// is a class for the sidebar section. If its 'pull-left" then the sidebar
+	// will be located on the left side of the page. "Hidden" ia buld in
+	// botstrap class that wont allow the sidebar to be displayed.'
+	$url =  ADMIN_DIR . 'assets/images/';
+	$of_options[] = array(
+		"name"		=> __("Main Layout", "thebigmag"),
+		"id"		=> 'single-page-layout',
+		"desc"		=> __("Select main content and sidebar alignment. Choose between left or right sidebar location.", "thebigmag"),
+		"std" 		=> "2c-l-fixed.css",
+		"type"		=> "images",
+		"options"         => array(
+			'pull-right' 		=> $url . '3cr.png',
+			'hidden' 			=> $url . '1col.png',
+			'pull-left' 		=> $url . '3cm.png',
+		)
+	);
 
 /*-----------------------------------------------------------------------------------*/
 /* Backup options */

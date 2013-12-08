@@ -22,20 +22,20 @@ global $data;
 
 	<div class="section-content">
 		<div class="column col-lg-3 col-sm-3 col-xs-3">
-			<h4 class="categories-title"><i class="icon-minus"></i><?php echo $data['categories_first'] ?></h4>
-			<?php Call::list_categories( $data['categories_first'], true, $data['categories_limit'] ) ?>
+			<h4 class="categories-title"><i class="fa fa-minus"></i><?php echo $data['categories_first'] ?></h4>
+			<?php TBM_Print::list_categories( $data['categories_first'], true, $data['categories_limit'] ) ?>
 		</div><!-- /column -->
 		<div class="column col-lg-3 col-sm-3 col-xs-3">
-			<h4 class="categories-title"><i class="icon-minus"></i><?php echo $data['categories_secound'] ?></h4>
-			<?php Call::list_categories( $data['categories_secound'], true, $data['categories_limit'] ) ?>
+			<h4 class="categories-title"><i class="fa fa-minus"></i><?php echo $data['categories_secound'] ?></h4>
+			<?php TBM_Print::list_categories( $data['categories_secound'], true, $data['categories_limit'] ) ?>
 		</div><!-- /column -->
 		<div class="column col-lg-3 col-sm-3 col-xs-3">
-			<h4 class="categories-title"><i class="icon-minus"></i><?php echo $data['categories_third'] ?></h4>
-			<?php Call::list_categories( $data['categories_third'], true, $data['categories_limit'] ) ?>
+			<h4 class="categories-title"><i class="fa fa-minus"></i><?php echo $data['categories_third'] ?></h4>
+			<?php TBM_Print::list_categories( $data['categories_third'], true, $data['categories_limit'] ) ?>
 		</div><!-- /column -->
 		<div class="column col-lg-3 col-sm-3 col-xs-3">
-			<h4 class="categories-title"><i class="icon-minus"></i><?php echo $data['categories_fourth'] ?></h4>
-			<?php Call::list_categories( $data['categories_fourth'], true, $data['categories_limit'] ) ?>
+			<h4 class="categories-title"><i class="fa fa-minus"></i><?php echo $data['categories_fourth'] ?></h4>
+			<?php TBM_Print::list_categories( $data['categories_fourth'], true, $data['categories_limit'] ) ?>
 		</div><!-- /column -->
 	</div><!-- /section-content -->
 </section><!-- /featured categories -->

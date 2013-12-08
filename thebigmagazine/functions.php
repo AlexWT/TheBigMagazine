@@ -18,9 +18,9 @@
 require_once ( 'admin/index.php' );
 
 // Helpers. Used with Call::Method() all over the project
-require_once ( 'inc/php/call.class.php' );
+require_once ( 'inc/php/TBM_Print.php' );
 
-class Functions {
+class TBM_Functions {
 
 	/**
 	 * Call all loading functions for the theme. They will be started right after theme setup.
@@ -58,6 +58,7 @@ class Functions {
 
 		//  Support post-thubnails as well!
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( 'large', 863, 400, true ); // The slider max (and all other big images.)
 		add_image_size( 'medium', 300, 200, true ); // Default medium size
 
 		// Add support for custom header images
@@ -97,7 +98,7 @@ class Functions {
 		add_filter( "wp_title", array( $this, "page_title" ) );
 
 		// Change excerpt lenght
-		add_filter( 'excerpt_more', array( $this, 'excerpt_length' ), 20 );
+		add_filter( 'excerpt_length', array( $this, 'excerpt_length' ), 10 );
 
 		// Add read more link instead of [...]
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
@@ -122,7 +123,10 @@ class Functions {
 		wp_enqueue_style( 'bootstrap' );
 
 		// The icons from font-awesome.
-		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array() );
+		// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array() );
+		// wp_enqueue_style( 'font-awesome' );
+
+		wp_enqueue_style( 'font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array() );
 		wp_enqueue_style( 'font-awesome' );
 
 		// Get the main stylesheet for the theme.
@@ -179,6 +183,16 @@ class Functions {
 			'name'          => __( 'Single page sidebar', 'thebigmag' ),
 			'id'            => 'sidebar-single',
 			'description'   => __( 'Appears on single post page', 'thebigmag' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		) );
+
+		register_sidebar( array(
+			'name'          => __( 'Home Page Widget Area 2', 'thebigmag' ),
+			'id'            => 'sidebar-latestPosts',
+			'description'   => __( 'Widget area, located right of the recent posts list. It is very narrow, so be careful with the widgets you use!', 'thebigmag' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h3 class="widget-title">',
@@ -278,4 +292,4 @@ class Functions {
 
 }
 
-$functions = new Functions;
+$TBM_Functions = new TBM_Functions;

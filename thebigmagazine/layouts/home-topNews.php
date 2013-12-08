@@ -41,7 +41,7 @@ global $data;
 				<?php }
 			} else {
 				// no posts found
-				Call::message( 'normal', 'No posts found!' );
+				TBM_Print::message( 'normal', 'No posts found!' );
 			}
 			/* Restore original Post Data */
 			wp_reset_postdata(); ?>

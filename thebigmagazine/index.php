@@ -21,9 +21,10 @@
 
 	<?php  // Check if the user want to display the categories section.
 	if( $data['featured1_switch'] ) 
-			get_template_part( 'layouts/home', 'category-1' ); ?>
+		get_template_part( 'layouts/home', 'category1' ); ?>
 
-	<?php get_template_part( 'layouts/home', 'three-categories' ); ?>
+	<?php get_template_part( 'layouts/home', 'threeCategories' ); ?>
+	<?php get_template_part( 'layouts/home', 'latestPosts' ); ?>
 </div><!-- /main-content -->
 
 <?php get_footer(); ?>

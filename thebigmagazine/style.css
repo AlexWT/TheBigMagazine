@@ -38,9 +38,15 @@
  *  2.4 Navigation
  * 3. Page Content
  *  3.1 Slider
+ *  3.2 News Section (index.php)
+ *  3.3 Featured Categories (index.php)
+ *  3.4 Category-1 (index.php)
+ *  3.5 Three Categories (index.php)
+ *  3.6 Latest Posts (index.php)
  * 4. Single page
  *  4.1 Entry
  * 5. Sidebar
+ *  5.1 Latest posts sidebar
  * Latest. Additional Styles
  */
 
@@ -71,6 +77,25 @@ ul li {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+/* WORDPRESS STYLES */
+.alignleft {
+	float: left;
+	margin: 20px 20px 20px 0;
+}
+
+.alignright {
+	float: right;
+	margin: 20px 0 20px 20px;
+}
+
+.previous-post-link {
+	float: left;
+}
+
+.next-post-link {
+	float: right;
 }
 
 /**
@@ -297,9 +322,19 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 	margin: 0
 }
 
+#carousel.carousel .item .carousel-caption h2 a {
+	color: white;
+}
+
+#carousel.carousel .item .carousel-caption h2 a:hover {
+	text-decoration: none;
+}
+
 #carousel.carousel .item .carousel-caption p {
 	margin-top: 20px;
 }
+
+/* NEWS SECTION */
 
 #top-news {
 	overflow: hidden;
@@ -308,6 +343,10 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 .news-wrapper {
 	box-shadow: inset 0 0 1px #000;
 	border-top: 8px solid #1670cc;
+}
+
+.news-wrapper .section-heading {
+	background: none;
 }
 
 #top-news .section-heading  {
@@ -342,6 +381,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 	font-weight: bold;
 }
 
+/* FEATURED CATEGORIES */
 section.featured-categories {
 	border: 1px solid #ddd;
 	padding: 5px;
@@ -401,16 +441,18 @@ header.section-header.big {
 }
 
 .section-heading {
-	background: white;
 	display: inline-block;
 	margin: 0;
-	padding-right: 20px;
+	padding: 0 20px 5px 0;
 	font-size: 20px;
 	font-weight: bolder;
 	color: #2382e3;
 	font-family: "Droid Sans";
+	background: white;
 }
 
+
+/* CATEGORY-1 */
 
 section.category-1 .featured-post .post-title {
 	margin: 0;
@@ -457,9 +499,12 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	font-weight: normal;
 }
 
-.post-content {
+.post-content,
+.entry-content {
 	font-family: Georgia;
 }
+
+/* THREE-CATEGORIES */
 
 #three-categories .post-title {
 	margin-top: 0px;
@@ -472,10 +517,41 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	font-family: "droid sans";
 }
 
+#three-categories .post-title {
+	line-height: 24px;
+	margin-top: 10px;
+}
+
 #three-categories .similar-posts a {
 	font-weight: normal;
 	font-size: 13px;
 }
+
+/* LATEST POSTS (BLOG posts list IN INDEX) */
+.latest-posts {}
+
+.latest-posts .entry {
+	border-bottom: 1px solid #f0f0f0;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.latest-posts .entry .entry-title {
+	margin: 0;
+	line-height: 20px;
+}
+
+.latest-posts .entry .entry-title a {
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "droid sans";
+}
+
+.latest-posts .entry .entry-content p {
+	margin-bottom: 0;
+}
+
 
 /**
  * 4. Single page
@@ -483,44 +559,92 @@ section.category-1 .featured-post .post-thumbnail:hover {
  */
 
 /* Entry */
-.entry .entry-title {
+.entry.blog .entry-title {
 	font-weight: bolder;
 	margin: 0;
 }
 
-.entry .entry-thumbnail {
+.entry.blog .entry-thumbnail {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
 
-.entry .date-stamp,
-.entry .modified {
+.entry.blog .date-stamp,
+.entry.blog .modified {
 	color: #aaa;
 }
 
-.entry-content {
+.entry.blog .entry-content {
 	font-family: Georgia;
 	font-size: 16px;
 }
 
-.entry-content h1,
-.entry-content h2,
-.entry-content h1,
-.entry-content h1,
-.entry-content h1,
-.entry-content h1 { 
+.entry.blog .entry-content p:first-child {
+	font-weight: bold;
+	font-family: "Droid sans", arial;
+	font-size: 14px;
+	color: #333;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.entry.blog .entry-content h1,
+.entry.blog .entry-content h2,
+.entry.blog .entry-content h1,
+.entry.blog .entry-content h1,
+.entry.blog .entry-content h1,
+.entry.blog .entry-content h1 { 
 	font-weight: bold; 
 	text-transform: uppercase;
 }
 
-.entry-content h1 { font-size: 26px; }
-.entry-content h2 { font-size: 24px; }
-.entry-content h3 { font-size: 22px; }
-.entry-content h4 { font-size: 18px; }
-.entry-content h5 { font-size: 14px; }
-.entry-content h6 { font-size: 12px; }
+.entry.blog .entry-content h1 { font-size: 26px; }
+.entry.blog .entry-content h2 { font-size: 24px; }
+.entry.blog .entry-content h3 { font-size: 22px; }
+.entry.blog .entry-content h4 { font-size: 18px; }
+.entry.blog .entry-content h5 { font-size: 14px; }
+.entry.blog .entry-content h6 { font-size: 12px; }
 
-a.post-edit-link { color: red; }
+.entry.blog a.post-edit-link { color: red; }
+
+.entry.blog footer.entry-info {
+	border-bottom: 1px solid #ccc;
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+
+.entry.blog footer.entry-info .titles {
+	clear: both;
+	margin-bottom: -10px;
+	overflow: hidden;
+}
+
+.entry.blog footer.entry-info .titles h5 {
+	font-weight: bold;
+}
+
+/* BLOG PAGE ENTRY */
+#main-content .entry {
+	margin-bottom: 50px;
+}
+
+#main-content .entry .entry-title {
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
+#main-content .entry .entry-title a {
+	color: black;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+#main-content .entry .entry-meta {
+	border-bottom: 1px solid #ccc;
+	margin-bottom:10px;
+	padding-bottom: 10px;
+}
 
 /**
  * 5. Sidebar
@@ -570,11 +694,39 @@ aside#single-sidebar .widget ul {
 
 aside#single-sidebar .widget ul li {
 	padding-left: 0;
-	margin: 0;	
 	list-style: none;
-	line-height: 18px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 5px;
 }
+
+aside#single-sidebar .widget.widget_recent_entries ul li {
+	line-height: 18px;
+	padding: 0;
+	list-style: none;
+	margin-bottom: 0;
+	border: none;
+}
+
+aside#single-sidebar .widget.widget_recent_entries ul li a {
+	display: block;
+	padding: 5px 10px;
+
+	--moz-transition:.2s linear; 
+	-webkit-transition:.2s linear; 
+	transition:.2s linear;
+}
+
+aside#single-sidebar .widget.widget_recent_entries ul li a:hover {
+	background: #2382E3;
+	color: white;
+	text-decoration: none;
+
+	-moz-transition:.0s ease-out; 
+	-webkit-transition:.0s ease-out; 
+	transition:.0s ease-out;
+}
+
 
 aside#single-sidebar .widget .widget-title {
 	margin: 0;
@@ -582,14 +734,22 @@ aside#single-sidebar .widget .widget-title {
 	font-size: 16px;
 	font-weight: bold;
 	text-transform: uppercase;
-	letter-spacing: 2px;
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 10px;
 }
 
 aside#single-sidebar .widget-area {
-	background: #f0f0f0;
+	background: #fff;
 	padding: 10px;
+}
+
+aside#single-sidebar .widget-area .widget {
+	margin-bottom: 30px;
+}
+
+/* LATEST POSTS AREA SIDEBAR */
+.latest-posts-sidebar {
+	
 }
 
 /* Additional Styles */

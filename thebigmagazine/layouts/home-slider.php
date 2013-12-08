@@ -22,6 +22,8 @@ global $data;
 		<?php // The Query
 		$the_query = new WP_Query( 'tag=' . $data['slider_tag'] );
 
+		// Make only the first element active. This is how
+		// the bootstrap carousel works. Else it will print nothing.
 		$active = true;
 
 		// The Loop
@@ -30,9 +32,9 @@ global $data;
 			 ?>
 			
 			<div class="item<?php if( $active ) echo ' active'; ?>">
-				<?php the_post_thumbnail() ?>
+				<?php if( has_post_thumbnail() ) the_post_thumbnail( 'large' ); ?>
 				<div class="carousel-caption">
-					<h2><?php the_title(); ?></h2>
+					<h2><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h2>
 				</div><!-- /carousel caption -->
 			</div>
 			
