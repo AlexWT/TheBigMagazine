@@ -1,4 +1,9 @@
-#### v1.0 BETA - Updates: 08.12.2013
+##### Commit: 09.12.2013
+---
+* Added masonry javascript library
+* Added masonry style for page-blog. (blog template)
+
+##### Commit: 08.12.2013
 ---
 * Added blog template
 * Added settings for sidebar location

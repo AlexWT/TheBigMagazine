@@ -19,9 +19,7 @@ global $data;
 			<?php get_sidebar(); ?>
 		</aside><!-- /sidebar -->
 	
-		<div id="main-content" class="col-lg-9 col-md-9">	
-
-			<div class="row">
+		<div id="main-content" class="col-lg-9 col-md-9 js-masonry">	
 			<?php
 				// Setup the pagination for the blog template.
 				if ( get_query_var('paged') ) {
@@ -53,11 +51,7 @@ global $data;
 						// Increment the counter for custom pagination.
 						$i++;
 
-						// Every secound article will be placed in a new row.
-						if( $i % 2 == 0 ) : ?>
-							</div> <!-- /row -->
-							<div class="row">
-						<?php endif;
+						
 					
 					endwhile; // End the while loop
 					
@@ -66,7 +60,6 @@ global $data;
 					wp_reset_query();
 				endif; 
 			?>
-			</div><!-- /row -->
 		</div><!-- /main-content -->
 
 	</div><!-- /content -->

@@ -88,6 +88,7 @@ class TBM_Functions {
 	 * @since v1.0.0
 	 */
 	public function add_actions() {
+
 		// Register all scripts and styles
 		add_action( 'wp_enqueue_scripts', array($this, 'load_scripts_and_styles') );
 
@@ -142,6 +143,9 @@ class TBM_Functions {
 
 		// Bootstrap.js file.
 		wp_enqueue_script( "bootstrap-js", get_template_directory_uri() . "/js/bootstrap.min.js" );
+
+		// Mansonry script. Used in blog page for organizing content.
+		wp_enqueue_script( 'masonry-js', get_template_directory_uri() . '/js/masonry.pkgd.min.js' );
 		
 	}
 

@@ -9,7 +9,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('entry col-lg-6 col-md-6'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>>
 
 	<header class="entry-header">
 		<a href="<?php the_permalink() ?>"><?php if( has_post_thumbnail() ) the_post_thumbnail('large'); ?></a>

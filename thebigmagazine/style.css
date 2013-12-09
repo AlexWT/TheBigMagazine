@@ -43,6 +43,7 @@
  *  3.4 Category-1 (index.php)
  *  3.5 Three Categories (index.php)
  *  3.6 Latest Posts (index.php)
+ *  3.7 Masonry design
  * 4. Single page
  *  4.1 Entry
  * 5. Sidebar
@@ -626,7 +627,8 @@ section.category-1 .featured-post .post-thumbnail:hover {
 
 /* BLOG PAGE ENTRY */
 #main-content .entry {
-	margin-bottom: 50px;
+	margin-bottom: 0px;
+	padding: 10px;
 }
 
 #main-content .entry .entry-title {
@@ -644,6 +646,24 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	border-bottom: 1px solid #ccc;
 	margin-bottom:10px;
 	padding-bottom: 10px;
+}
+
+
+/* MASONRY */
+.js-masonry { 
+	margin: 30px auto 0; 
+}
+
+.entry {
+	margin: 0 0 20px;
+	text-align: center;
+	width: 430px;
+}
+.entry.cs2 { width: 610px; }
+.entry img { width: 100%; }
+
+.margin-bottom {
+	margin-bottom: 20px;
 }
 
 /**
@@ -837,17 +857,16 @@ aside#single-sidebar .widget-area .widget {
 }
 
 /* Large desktop */
-@media (max-width: 1200px) {
-	#top-news {
-		max-height: 332px ;
-	}
+@media (max-width: 1208px) {
+	#top-news { max-height: 332px;	}
+
+	#main-content.js-masonry .entry { width: 48.5%; }
+	#main-content.js-masonry .entry.cs2 { width: 560px; }
 }
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-	#top-news {
-		height: auto
-	}
+	#top-news {	height: auto }
 
 	#top-news li {
 		width: 45%;
@@ -858,24 +877,24 @@ aside#single-sidebar .widget-area .widget {
 		height: auto !important;
 	}
 
-	.category-1 .similar-posts ul {
-		clear: both;
-	}
+	.category-1 .similar-posts ul { clear: both; }
 	.category-1 .similar-posts ul li {
 		display: inline-block;
 		border-bottom: 1px solid #f0f0f0;
 	}
+
+	.container-fluid > .js-masonry .entry { width: 280px; }
+	.container-fluid > .js-masonry .entry.cs2 { width: 610px; }
+	.container > .js-masonry .entry { width: 337px; }
+	.container > .js-masonry .entry.cs2 { width: 100%; }
 }
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-	#page-header section.heading {
-		padding: 0 20px;
-	}
 
-	#carousel.carousel .item .carousel-caption h2 {
-		font-size: 18px;
-	}
+	#page-header section.heading { padding: 0 20px; }
+	#carousel.carousel .item .carousel-caption h2 { font-size: 18px; }
+	#three-categories .post-title a { line-height: 12px; }
 
 	#top-news {
 		height: auto;
@@ -892,9 +911,11 @@ aside#single-sidebar .widget-area .widget {
 		height: auto;
 	}
 
-	#three-categories .post-title a {
-		line-height: 12px;
-	}
+	body {  }
+	.entry, .entry.cs2 { width: 100%; }
+
+	#main-content.js-masonry .entry { width: 100%; }
+
 }
  
 /* Landscape phones and down */
@@ -921,24 +942,9 @@ aside#single-sidebar .widget-area .widget {
 		text-align: center;
 	}
 
-	.search-section .signup {
-		float:none;
-	}
-
-	.search-section .searchform {
-		float: none;
-		margin: 10px auto;
-	}
-
-	.featured-categories .column {
-		width: 100%;
-	}
-
-	.category-1 .post-thumbnail  {
-		width: 100%;
-	}
-
-	.category-1 .post-title {
-		clear: both;
-	}
+	.search-section .signup { float:none; }
+	.search-section .searchform { float: none; margin: 10px auto; }
+	.featured-categories .column { width: 100%; }
+	.category-1 .post-thumbnail  { width: 100%; }
+	.category-1 .post-title { clear: both; }
 }
