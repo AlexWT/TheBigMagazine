@@ -19,12 +19,29 @@ class TBM_Print {
 	 * 
 	 * @since v1.0.0
 	 */
-	function message( $type = 'notice', $msg = 'Notice: Add a message and type!' ) {
+	public function message( $type = 'notice', $msg = 'Notice: Add a message and type!' ) {
 
 		// Print the surounding div and the type of message.
 		echo "<div class='message-box $type'>";
 		echo "<p>$msg</p>";
 		echo "</div>";
+
+	}
+
+	/**
+	 * When the class is used, it will be callsed " TBM_Breadcrumb::print() ".
+ 	 * All the rest of the classes are protected. There is no need of initialization,
+ 	 * so no constructors will be created. (not created to work with parameters)
+	 * 
+	 * @since v1.0.0
+	 */
+	public function breadcrumbs() {
+		
+		// Initialise the object for a breadcrumb
+		$bc = new TBM_Breadcrumb();
+
+		// One method to rule them all!
+		$bc->display();
 
 	}
 
@@ -41,9 +58,34 @@ class TBM_Print {
 	 * @since 1.0.0
 	 * @return Displays the post author link and name.
 	 */
-	public static function author_link(){ 
+	public function author_link(){ 
 		$link = get_author_posts_url( get_the_author_meta( 'ID' ) );
 		echo '<a href="'. $link .'">'. get_the_author() .'</a>';
+	}
+
+	/**
+	 * Pagination. 
+	 * 
+	 * Print on the screen pagination links. Can be used from various
+	 * of pages, like categories, tags and so on.
+	 * 
+	 * @since v1.0.0
+	 */
+	public function pagination() {
+		global $wp_query;
+
+		// need an unlikely integer
+		$big = 999999999; 
+		
+		// Preparing the arguments for  paginate_links();
+		$args = array(
+			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format' => '?paged=%#%',
+			'current' => max( 1, get_query_var('paged') ),
+			'total' => $wp_query->max_num_pages
+		);
+
+		echo paginate_links( $args );
 	}
 
 	/**
@@ -60,14 +102,14 @@ class TBM_Print {
 	 * 
 	 * @since v1.0.0
 	 */
-	public static function list_categories( $parent = 'uncategorized', $print_ul = true, $limit = 3 ) {
+	public function list_categories( $parent = 'uncategorized', $print_ul = true, $limit = 3 ) {
 
 		// Get the category ID
 		$catObj = get_category_by_slug( strtolower( $parent ) ); 
 
 		// Query categories and get only the child ones. (doesnt hide empty categories)
 		$categories = get_categories( array('child_of' => $catObj->term_id, 'hide_empty' => 0) );
-
+		
 		// Starting ul tags.
 		if( $print_ul ) echo '<ul>';
 
@@ -75,7 +117,7 @@ class TBM_Print {
 		foreach( $categories as $category ) {
 			if( $counter++ == $limit ) break;
 		?>
-			<li><a href="<?php get_category_link( $category->term_ID ) ?>"><?php echo $category->name ?></a></li>
+			<li><a href="<?php echo get_category_link( $category->cat_ID ) ?>"><?php echo $category->name ?></a></li>
 		<?php } 
 
 		// Close ul tags.
@@ -95,7 +137,7 @@ class TBM_Print {
 	 * @since v1.0.0
 	 */
 
-	public static function prev_next_links( $link = 'both', $length = 0, $before = '', $after = '' ) {
+	public function prev_next_links( $link = 'both', $length = 0, $before = '', $after = '' ) {
 
 		// Make sure that the page where these links are is single
 		if( !is_single() ) return;
@@ -154,7 +196,7 @@ class TBM_Print {
 	 * @param bool $show_comments Display or not comments count after title.
 	 * @since  v1.0.0
 	 */
-	public static function posts( $category , $limit = 3, $offset = 1, $print_ul = true, $show_comments = true ) {
+	public function posts( $category , $limit = 3, $offset = 1, $print_ul = true, $show_comments = true ) {
 
 		// Get all categories or only one.
 		if( isset( $category ) )

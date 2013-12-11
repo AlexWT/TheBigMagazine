@@ -17,8 +17,7 @@
 // Include the Slightly Modified Options Framework
 require_once ( 'admin/index.php' );
 
-// Helpers. Used with Call::Method() all over the project
-require_once ( 'inc/php/TBM_Print.php' );
+require_once ( 'inc/php/TBM_Main.php' );
 
 class TBM_Functions {
 

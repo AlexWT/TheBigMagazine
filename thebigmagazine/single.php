@@ -26,20 +26,22 @@ $hidden =  $data['single-page-layout'] == 'hidden' ? true : false;
 
 <div id="main-content" class="<?php if( !$hidden ) : ?> col-lg-7 col-md-7 <?php endif; ?> ">
 	<div class="entry blog">
+
 		<strong>Current date: </strong><span class="date-stamp"><?php the_date( "F j, Y g:i a" ); ?></span>
 		<strong>Last Modified: </strong><span class="modified"><?php the_modified_date(); ?></span>
-		<?php edit_post_link( $link, "<strong class='pull-right edit-link'>[", ']</strong>', $id ); ?> 
+		<?php edit_post_link( $link, "<strong class='pull-right edit-link'>[", ']</strong>', $id ); ?>
+		<?php TBM_Print::breadcrumbs(); ?> 
+
 		<header class='entry-header'>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<span class="author">By: <?php TBM_Print::author_link(); ?></span>
 			<span class="comments"><a href="<?php comments_link(); ?>"><?php comments_number('(No Comments)', '(One Comment)', '(% Comments)' );?></a></span>
-			<div class="entry-thumbnail">
-				<?php if( has_post_thumbnail() ) the_post_thumbnail(); ?>
-			</div>
+			<div class="entry-thumbnail"><?php if( has_post_thumbnail() ) the_post_thumbnail(); ?></div>
 		</header>
+
 		<div class="entry-content">
 			<?php the_content(); ?>
-		</div>
+		</div><!-- /entry-content -->
 
 		<footer class="entry-info">
 			<?php the_tags('<span>Tags: </span>',', ','<br />'); ?>
@@ -47,9 +49,9 @@ $hidden =  $data['single-page-layout'] == 'hidden' ? true : false;
 			<div class='titles'>
 				<h5 class='pull-left'>Previous article:</h5>
 				<h5 class='pull-right'>Next article:</h5>
-			</div>
+			</div><!-- /titles -->
 			<?php TBM_Print::prev_next_links( 'both', 50 ); ?>
-		</footer>
+		</footer><!-- entry-info -->
 	</div><!-- /entry-blog -->
 </div><!-- /main-content -->
 

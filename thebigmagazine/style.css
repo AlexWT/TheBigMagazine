@@ -46,6 +46,8 @@
  *  3.7 Masonry design
  * 4. Single page
  *  4.1 Entry
+ *  4.2 Category Page
+ *  4.3 Masonary Blog
  * 5. Sidebar
  *  5.1 Latest posts sidebar
  * Latest. Additional Styles
@@ -625,6 +627,10 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	font-weight: bold;
 }
 
+.entry .bc_message {
+	display: block;
+}
+
 /* BLOG PAGE ENTRY */
 #main-content .entry {
 	margin-bottom: 0px;
@@ -648,19 +654,29 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	padding-bottom: 10px;
 }
 
+/* CATEGORY PAGE */
+#main-content .page-heading h2 {
+	margin: 0;
+}
+
+#main-content .page-heading {
+	border-bottom: 1px solid #f0f0f0;
+	width: 100%;
+}
+
 
 /* MASONRY */
 .js-masonry { 
-	margin: 30px auto 0; 
+	/*margin: 30px auto 0; */
 }
 
-.entry {
+.js-masonry .entry {
 	margin: 0 0 20px;
 	text-align: center;
 	width: 430px;
 }
-.entry.cs2 { width: 610px; }
-.entry img { width: 100%; }
+.js-masonry .entry.cs2 { width: 610px; }
+.js-masonry .entry img { width: 100%; }
 
 .margin-bottom {
 	margin-bottom: 20px;
