@@ -10,7 +10,7 @@
 
 global $data;
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?>
 <head>
 	<title><?php wp_title( '-', true, 'right' ); ?></title>
 
@@ -19,7 +19,6 @@ global $data;
 	<meta name="description" content="<?php bloginfo("description"); ?>">
 	<meta name="author" content="<?php bloginfo("author"); ?>">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -34,10 +33,16 @@ global $data;
 
 				</div><!-- /description -->
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="branding">
-					<h1 class="branding"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+					<h1 class="branding <?php if( $data['logo'] ) echo "custom-logo"; ?>">
+						<?php if( ! $data['logo'] ) : ?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+						<?php else: ?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo $data['logo'] ?>" alt="" title='<?php bloginfo( 'name' ); ?>'></a>
+						<?php endif; ?>
+					</h1>
 				</div><!-- /branding -->
 				<div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 search-section">
-					<div class="signup">
+					<div class="signup btn-group">
 						
 						<?php get_template_part('element','login'); ?>
 

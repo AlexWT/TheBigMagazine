@@ -140,7 +140,7 @@ class TBM_Print {
 	public function prev_next_links( $link = 'both', $length = 0, $before = '', $after = '' ) {
 
 		// Make sure that the page where these links are is single
-		if( !is_single() ) return;
+		if( !is_single() OR is_page() ) return;
 
 		// Get the previous and next posts objects
 		$previous 	= get_previous_post();	// Return Object
@@ -196,13 +196,13 @@ class TBM_Print {
 	 * @param bool $show_comments Display or not comments count after title.
 	 * @since  v1.0.0
 	 */
-	public function posts( $category , $limit = 3, $offset = 1, $print_ul = true, $show_comments = true ) {
+	public function posts( $category = NULL , $limit = 3, $offset = 1, $print_ul = true, $show_comments = true ) {
 
 		// Get all categories or only one.
 		if( isset( $category ) )
-			$the_query = new WP_Query( 'category_name=' . $category . '&posts_per_page=' . $limit . '&offset=' . $offset );
+			$the_query = new WP_Query( 'cat=' . $category . '&posts_per_page=' . $limit . '&offset=' . $offset );
 		else 
-			$the_query = new WP_Query( 'category_name=uncategorized&posts_per_page=' . $limit . '&offset=' . $offset );
+			$the_query = new WP_Query( 'cat=1&posts_per_page=' . $limit . '&offset=' . $offset );
 
 		// Print UL tag if required.
 		if( $print_ul == true )
@@ -242,5 +242,63 @@ class TBM_Print {
 		wp_reset_postdata();
 
 	}
+
+
+	/**
+	 * Print the comments title for single pages. Its separated on another method for better read
+	 * insidte the comments template. ( + if its used elsewhere )
+	 *
+	 * @since  v1.0.0
+	 */
+	public function comments_title() {
+		printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'thebigmag' ),
+				number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+	}
+
+	/**
+	 * Category printed on screen.
+	 * 
+	 * @param bool $print_link Print link if TRUE
+	 * @since  v1.0.0
+	 */
+	public function category_name( $print_link = FALSE ) {
+
+		// Get the most important - the category. (array of objects, we take the first one always)
+		$post_category = get_the_category();
+
+		// Print the link of category
+		if( $print_link ) {
+	
+			$post_category_link = get_category_link( $post_category[0]->cat_ID );
+			echo "<a href='{$post_category_link}'>{$post_category[0]->name}</a>";
+
+		} 
+		else echo $post_category[0]->name;
+	}
+
+	/**
+	 * Post thumbnail calling. Shorted here, because we make many checks for wich page its called from. 
+	 * its used to not use very big images when they are no needed, and by this speeds up the procces of
+	 * opening a page.
+	 * 
+	 * @since  v1.0.0
+	 */
+	public function post_thumbnail() {
+
+		if( has_post_thumbnail() ) {
+
+			// Check if the current page need large image.
+			if( is_single() OR is_page() ) {
+				the_post_thumbnail('large'); 
+			}
+			else {
+				// Now for the small ones
+				the_post_thumbnail( 'medium' );
+			}
+
+		} // has_post_thumbnail
+
+	}
+
 
 }

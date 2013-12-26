@@ -48,6 +48,7 @@
  *  4.1 Entry
  *  4.2 Category Page
  *  4.3 Masonary Blog
+ *  4.4 Comments
  * 5. Sidebar
  *  5.1 Latest posts sidebar
  * Latest. Additional Styles
@@ -68,6 +69,10 @@ body {
 	overflow:scroll;
 }
 
+body.logged-in {
+	margin-top: -32px
+}
+
 h1,h2,h3,h4,h5,h6 {
 	font-family: "Droid Sans", "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
 }
@@ -81,6 +86,8 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+
 
 /* WORDPRESS STYLES */
 .alignleft {
@@ -99,6 +106,11 @@ img {
 
 .next-post-link {
 	float: right;
+}
+
+::selection {
+	color: white;
+	background: #000;
 }
 
 /**
@@ -130,30 +142,38 @@ header#page-header .description .daily-message {
 
 header#page-header .description .current-date,
 header#page-header .description .secoundary-navigation {
-	opacity: 0.3;
+	/*opacity: 0.3;*/
 }
 
+header#page-header .description .secoundary-navigation,
 header#page-header .description .secoundary-navigation ul {
 	margin-top: 20px;
 	padding: 0;
 }
 
+header#page-header .description .secoundary-navigation li,
 header#page-header .description .secoundary-navigation ul li {
 	float: left;
 	list-style: none;
 	margin-right: 10px;
 }
 
+header#page-header .description .secoundary-navigation li a { 
+	color: white; 
+}
+
+header#page-header ::-webkit-input-placeholder { color: white; }
+header#page-header :-moz-placeholder { color: white; }
+header#page-header ::-moz-placeholder {  color: white; }
+header#page-header :-ms-input-placeholder { color: white; }
+
 /* LOGO */
 #branding h1.branding  {
 	text-indent: -9999px;	/* remove text */
 	margin-top: 0;
-	
-
 	/* The hard-codded image. */
 	background: transparent url("inc/images/logo-white-big.png") no-repeat top center;
 }
-
 
 #branding h1.branding a {
 	height: 76px;
@@ -165,25 +185,6 @@ header#page-header .description .secoundary-navigation ul li {
 	float: right;
 }
 
-.search-section .signup a {
-	color: white;
-}
-
-.search-section .signup .btn-signup {
-	border: #000 1px solid;
-	background: #444;
-	border-radius: 4px;
-	box-shadow: 0.5px 0.866px 1px 0px rgb( 0, 0, 0 );
-}
-
-.search-section .signup .btn-signup:active {
-	box-shadow: inset 0px 2px 3px 0px rgba( 0, 0, 0, 0.3 );
-}
-
-
-.search-section .signup .btn-signup:hover {
-	background: #555;
-}
 .search-section .searchform {
 	margin-top: 20px;
 	width: 60%;
@@ -232,61 +233,55 @@ nav#page-navigation ul.nav li a:hover {
 
 }
 
-nav#page-navigation ul.nav li.active a {
-	color: #343434;
-	background: white;
-}
-
-nav#page-navigation ul.nav .dropdown-menu {
-	padding: 0;
-	-moz-border-radius-bottomright: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	background: #333;
-	color: white;
-}
-
-nav#page-navigation ul.nav .dropdown-menu ul {
-	background: #262626;
-}
-
-nav#page-navigation ul.nav .dropdown-menu li:last-child a {
-	border-bottom: none;
-	-moz-border-radius-bottomright: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-
-nav#page-navigation ul.nav li.dropdown.open {
-	background: #262626;
-}
-
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover {
-	background: #262626;
-}
-
-.navbar-default .navbar-nav>.open>a:focus {
-	background: #009cff
-}
-
-nav#page-navigation ul.nav li.dropdown ul a {
-	color: #fff;
-	font-weight: normal;
-	text-transform: none;
-	border-bottom: 1px solid #555;
-	padding: 10px 30px;
-}
-
-nav#page-navigation ul.nav li.dropdown ul a:hover {
-	color: white;
-	background: #009cff;
-}
-
-ul.nav li.dropdown:hover ul.dropdown-menu{
+/* dropdown styling*/
+nav#page-navigation ul.nav:after {
+	content: "";
+	clear: both;
 	display: block;
+	/* -- ^ the important part -- */
 }
+
+nav#page-navigation ul.nav ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	/* -- ^ the important part -- */
+	background: #333;
+	padding: 0;
+}
+
+nav#page-navigation ul.nav ul li {
+	float: none;
+	position: relative;
+	/* -- ^ the important part -- */
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav#page-navigation ul.nav ul li a {
+	margin: 0;
+	padding: 10px 20px;
+	display: block;
+	min-width: 200px;
+}
+
+nav#page-navigation ul.nav ul li a:hover {
+	text-decoration: none;
+}
+
+nav#page-navigation ul.nav li:hover > ul {
+	display: block;
+	/* -- ^ the important part -- */
+}
+
+nav#page-navigation ul.nav ul ul {
+	position: absolute; 
+	left: 100%; 
+	top:0;
+	/* -- ^ the important part -- */
+}
+
 
 
 /**
@@ -366,6 +361,9 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 	border-bottom: 1px solid #ddd;
 }
 
+#top-news .section-heading h3 i {
+	margin-right: 5px;
+}
 
 #top-news ul {
 	padding: 0px;
@@ -555,7 +553,6 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	margin-bottom: 0;
 }
 
-
 /**
  * 4. Single page
  * ============================================================
@@ -580,9 +577,10 @@ section.category-1 .featured-post .post-thumbnail:hover {
 .entry.blog .entry-content {
 	font-family: Georgia;
 	font-size: 16px;
+	word-wrap: break-word;
 }
 
-.entry.blog .entry-content p:first-child {
+.entry.blog .entry-content.leading p:first-child {
 	font-weight: bold;
 	font-family: "Droid sans", arial;
 	font-size: 14px;
@@ -627,6 +625,18 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	font-weight: bold;
 }
 
+.entry.blog footer.entry-info .titles h5:first-child:before {
+	font-family: FontAwesome;
+	content: "\f177  "; 
+	font-size: 12px;
+}
+
+.entry.blog footer.entry-info .titles h5:last-child:after {
+	font-family: FontAwesome;
+	content: "  \f178"; 
+	font-size: 12px;
+}
+
 .entry .bc_message {
 	display: block;
 }
@@ -654,7 +664,19 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	padding-bottom: 10px;
 }
 
-/* CATEGORY PAGE */
+#main-content .entry .similar-posts {
+	background: #f0f0f0;
+	padding: 5px 20px;
+}
+#main-content .entry .similar-posts h3 {
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 0;
+	border-bottom: 1px solid #ccc;
+	padding: 10px 0;
+}
+
+/* OTHER PAGES */
 #main-content .page-heading h2 {
 	margin: 0;
 }
@@ -664,6 +686,165 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	width: 100%;
 }
 
+body.search .page-header {
+	margin: 0;
+}
+
+body.search .page-header h2 {
+	margin: 0;
+}
+
+body.search .entry {
+	margin-bottom: 200px;
+	text-align: justify;
+}
+
+body.search .entry .entry-title {
+	font-size: 18px;
+}
+
+
+/* COMMENTS */
+#comments .comments-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 25px;
+}
+
+#comments .comments-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#comments .comments-list > li {
+	margin-bottom: 40px;
+}
+
+#comments .comments-list ul.children li {
+	list-style-image: url("images/comments-up.png");
+	margin-top: 10px;
+}
+
+#comments .comments-list > li .comment-body {
+	border-left: 3px solid #f0f0f0;
+}
+
+#comments .comments-list ul.children li .comment-body:hover,
+#comments .comments-list .comment-body:hover {
+	border-left: 3px solid #2382E3;
+}
+
+#comments .comments-list .comment-body {
+	border: 1px solid #f0f0f0;
+	padding: 20px;
+}
+
+#comments .comments-list .comment-body > p {
+	font-family: georgia;
+	font-size: 16px;
+}
+
+#comments .comments-list .comment-body .comment-author,
+#comments .comments-list .comment-body .comment-meta  {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#comments .comments-list .comment-body .comment-author img {
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+#comments .comment-response {}
+#comments .nocomments { font-weight: bold; }
+#comments .comment-awaiting-moderation { font-style: normal; font-size: 12px; font-weight: bold }
+
+#comments .comment-reply-link:before {
+	font-family: FontAwesome;
+	content: "\f112  "; 
+	font-size: 12px;
+}
+
+#comments #cancel-comment-reply-link { font-size: 12px; color: #ed331c ; font-weight: bold; }
+#comments #cancel-comment-reply-link:after { 
+	font-family: FontAwesome;
+	content: " \f00d"; 
+}
+
+#respond #reply-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 25px;
+}
+
+#respond .comment-notes {
+	font-style: italic;
+}
+
+.comment-form .comment-form-author { display: block; width: 50%; float: left; }
+.comment-form .comment-form-email { display: block; width: 50%; float: right; }
+.comment-form .comment-form-url { clear: both; }
+.comment-form .comment-form-url input { width: 99%; }
+.comment-form .comment-form-author input,
+.comment-form .comment-form-email input { display: block; width: 98%; }
+.comment-form .comment-form-comment textarea { display: block; width:99%; }
+
+.comment-form .comment-form-url input,
+.comment-form .comment-form-author input,
+.comment-form .comment-form-email input,
+.comment-form .comment-form-comment textarea {
+	padding: 5px 10px; 
+	outline: none; 
+	border: 1px solid #d5d5d5; 	
+}
+
+.comment-form .comment-form-url input:focus,
+.comment-form .comment-form-author input:focus,
+.comment-form .comment-form-email input:focus,
+.comment-form .comment-form-comment textarea:focus {
+	border: 1px solid #1670cc;
+}
+
+.comment-form .form-allowed-tags {
+	word-wrap: break-word;
+	overflow: auto;
+}
+
+.comment-form .required {
+	color: #ed331c;
+}
+
+.comment-form .form-submit input[type="submit"] {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.8;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+
+	color: #ffffff;
+	background-color: #2382e3;
+	border-color: #1b75d2;
+}
+
+.comment-form .form-submit input[type="submit"]:focus,
+.comment-form .form-submit input[type="submit"]:active {
+	color: #ffffff;
+	background-color: #196ec4;
+	border-color: #14579c;
+}
 
 /* MASONRY */
 .js-masonry { 
@@ -674,9 +855,30 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	margin: 0 0 20px;
 	text-align: center;
 	width: 430px;
+	display: block;
 }
 .js-masonry .entry.cs2 { width: 610px; }
-.js-masonry .entry img { width: 100%; }
+.js-masonry .entry .entry-thumbnail img { 
+	width: 100%; 
+
+}
+
+.page.search .js-masonry .entry {
+	width: 33.33%;
+	word-wrap: break-word;
+}
+
+.entry-thumbnail img:hover {
+	opacity: 0.5;
+	-webkit-transition: .2s linear;
+	transition: .2s linear;
+}
+
+.entry-thumbnail {
+	background: #fff;
+	height: 100%;
+	display: block;
+}
 
 .margin-bottom {
 	margin-bottom: 20px;
@@ -783,6 +985,13 @@ aside#single-sidebar .widget-area .widget {
 	margin-bottom: 30px;
 }
 
+aside#sidebar .widget .searchform {
+	width: 100%
+}
+aside#sidebar .widget .searchform input[type="text"]{
+	width: 100%;
+}
+
 /* LATEST POSTS AREA SIDEBAR */
 .latest-posts-sidebar {
 	
@@ -852,15 +1061,20 @@ aside#single-sidebar .widget-area .widget {
 	color:  #555;
 }
 
-.modal-content {width: 300px;}
+.modal-content {
+	width: 300px;
+	left: 25%;
+}
 
 #loginform label {
 	display: block;
 }
+
 #loginform .input {
 	border: 1px solid #ccc;
 	background: white;
-	min-width: 100%
+	min-width: 100%;
+	padding: 3px 10px;
 }
 
 #loginform .button-primary {
@@ -872,8 +1086,15 @@ aside#single-sidebar .widget-area .widget {
 	padding: 5px 0;
 }
 
+.btn.btn-dark {
+	color: #fff;
+	background-color: #333;
+	border-color: #111;
+}
+
 /* Large desktop */
 @media (max-width: 1208px) {
+
 	#top-news { max-height: 332px;	}
 
 	#main-content.js-masonry .entry { width: 48.5%; }
@@ -882,6 +1103,7 @@ aside#single-sidebar .widget-area .widget {
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+
 	#top-news {	height: auto }
 
 	#top-news li {
@@ -903,10 +1125,20 @@ aside#single-sidebar .widget-area .widget {
 	.container-fluid > .js-masonry .entry.cs2 { width: 610px; }
 	.container > .js-masonry .entry { width: 337px; }
 	.container > .js-masonry .entry.cs2 { width: 100%; }
+
+	aside#single-sidebar { border-top: 3px solid #333; }
+	aside#single-sidebar .widget {
+		width: 70%;
+		display: block;
+		margin: 0 auto;
+	}
 }
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+	body.logged-in {
+		margin-top: -52px
+	}
 
 	#page-header section.heading { padding: 0 20px; }
 	#carousel.carousel .item .carousel-caption h2 { font-size: 18px; }
@@ -932,10 +1164,25 @@ aside#single-sidebar .widget-area .widget {
 
 	#main-content.js-masonry .entry { width: 100%; }
 
+	.page.search .js-masonry .entry {
+		width: 50%;
+	}
+
+	aside#single-sidebar { border-top: 3px solid #333; }
+	aside#single-sidebar .widget {
+		width: 70%;
+		display: block;
+		margin: 0 auto;
+	}
+
 }
  
 /* Landscape phones and down */
 @media (max-width: 480px) {
+	body.logged-in {
+		margin-top: -52px
+	}
+
 	#top-news ul {
 		margin: 0;
 		padding: 0;
@@ -963,4 +1210,19 @@ aside#single-sidebar .widget-area .widget {
 	.featured-categories .column { width: 100%; }
 	.category-1 .post-thumbnail  { width: 100%; }
 	.category-1 .post-title { clear: both; }
+
+	.page.search .js-masonry .entry {
+		width: 100%;
+	}
+
+	aside#single-sidebar {
+		border-top: 3px solid #333;
+	}
+
+	aside#single-sidebar .widget {
+		width: 100%;
+	}
 }
+
+/* Include custom CSS file */
+@import url("inc/php/dynamic_stylesheet.php")

@@ -9,10 +9,10 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>
 
 	<header class="entry-header">
-		<a href="<?php the_permalink() ?>"><?php if( has_post_thumbnail() ) the_post_thumbnail('large'); ?></a>
+		<a href="<?php the_permalink() ?>" class='entry-thumbnail'><?php TBM_Print::post_thumbnail(); ?></a>
 		<h2 class='entry-title'>
 			<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 		</h2><!-- /entry-title -->
@@ -25,7 +25,14 @@
 			<span class="date"><?php the_date(); ?></span>
 		</div>
 		
-		<?php the_excerpt(); ?>
+
+		<?php 
+		if( is_single() OR is_page() ) {
+			the_content();
+		} else {
+			the_excerpt(); 
+		}
+		?>
 	</div><!-- /entry-content -->
 
 </article><!-- #post -->

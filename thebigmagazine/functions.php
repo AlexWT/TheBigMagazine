@@ -80,7 +80,7 @@ class TBM_Functions {
 	}
 
 	/**
-	 * Add actions in wordpress theme. All the actions will be here.
+	 * Add actions and filters in wordpress theme. All the actions will be here.
 	 * 
 	 * @uses add_action()
 	 * @uses add_filter()
@@ -94,6 +94,9 @@ class TBM_Functions {
 		// Register all menus.
 		add_action( 'init', array( $this, 'register_menus' ) );
 
+		// Register our Widgets
+		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+
 		// Post title filter.
 		add_filter( "wp_title", array( $this, "page_title" ) );
 
@@ -102,9 +105,6 @@ class TBM_Functions {
 
 		// Add read more link instead of [...]
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
-
-		// Register our Widgets
-		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 
 	}
 
@@ -133,9 +133,13 @@ class TBM_Functions {
 		wp_enqueue_style( 'stylesheet', get_stylesheet_uri(), array(), '2013-10-18' );
 		wp_enqueue_style( 'stylesheet' );
 
-		// Dynamicly generated CSS file from the theme options pannel
-		wp_enqueue_style( 'dynamic-css', get_template_directory_uri() . '/inc/php/stylesheet.php', array() );
-		wp_enqueue_style( 'dynamic-css' );
+		// Get the main stylesheet for the theme.
+		wp_enqueue_style( 'dynamic', get_template_directory_uri() . '/dynamic.css.php', array(), '2013-10-18' );
+		wp_enqueue_style( 'dynamic' );
+
+		// Include the main font used - source sans pro
+		wp_enqueue_style( 'font', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700', array());
+		wp_enqueue_style( 'font' );
 
 		// Include jQuery from WP Core
 		wp_enqueue_script( "jquery" );

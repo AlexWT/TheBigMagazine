@@ -105,6 +105,15 @@ class TBM_Breadcrumb {
 			echo get_the_time('Y');
 		}
 
+		if( is_page() ) {
+			the_title();
+		}
+
+		if( is_search() ) {
+			$output = "Search" . $this->separator;
+			echo $output . get_query_var('s');
+		}
+
 	}
 
 }

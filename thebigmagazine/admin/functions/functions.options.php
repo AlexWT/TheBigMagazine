@@ -6,25 +6,25 @@ if (!function_exists('of_options'))
 {
 	function of_options()
 	{
-		//Access the WordPress Categories via an Array
+		// Access the WordPress Categories via an Array
 		$of_categories 		= array();  
 		$of_categories_obj 	= get_categories('hide_empty=0');
 		foreach ($of_categories_obj as $of_cat) {
 			$of_categories[$of_cat->cat_ID] = $of_cat->cat_name;}
 		$categories_tmp 	= array_unshift($of_categories, "Select a category:");    
 		   
-		//Access the WordPress Pages via an Array
+		// Access the WordPress Pages via an Array
 		$of_pages 			= array();
 		$of_pages_obj 		= get_pages('sort_column=post_parent,menu_order');    
 		foreach ($of_pages_obj as $of_page) {
 			$of_pages[$of_page->ID] = $of_page->post_name; }
 		$of_pages_tmp 		= array_unshift($of_pages, "Select a page:");       
 	
-		//Testing 
+		// Testing 
 		$of_options_select 	= array("one","two","three","four","five"); 
 		$of_options_radio 	= array("one" => "One","two" => "Two","three" => "Three","four" => "Four","five" => "Five");
 		
-		//Sample Homepage blocks for the layout manager (sorter)
+		// Sample Homepage blocks for the layout manager (sorter)
 		$of_options_homepage_blocks = array
 		( 
 			"disabled" => array (
@@ -108,8 +108,18 @@ $of_options = array();
 /*-----------------------------------------------------------------------------------*/
 $of_options[] = array( 	
 	"name" 		=> "Home Page",
-	"type" 		=> "heading"
+	"type" 		=> "heading",
+	"icon"		=> ADMIN_IMAGES . "icon-home.png"
 );
+
+	$of_options[] = array(
+		"name"		=> __("Logo", "thebigmag"),
+		"id"		=> 'logo',
+		"desc"		=> __("Select your logo 370x76px MAX", "thebigmag"),
+		"std"		=> "",
+		"type"		=> "media",
+		"mod"		=> "min"
+	);
 
 	$of_options[] = array( 	
 		"name" 		=> "Hello there!",
@@ -175,6 +185,16 @@ $of_options[] = array(
 		"std"		=> __("NEW", "thebigmag"),
 		"icon"		=> true,
 		"type"		=> "text"
+	);
+
+	$of_options[] = array(
+		"name"		=> __("Ammount of posts shown", "thebigmag"),
+		"id"		=> 'top_news_limit',
+		"desc"		=> __("How many to be listed. Tip - optimise them to be equal to slider height", "thebigmag"),
+		"std"		=> "5",
+		"type"		=> "sliderui",
+		"max"		=> "15",
+		"step"		=> "1"
 	);
 
 	/* -------------- CATEGORIES ---------------- */
@@ -357,7 +377,7 @@ $of_options[] = array(
 $of_options[] = array( 	
 	"name" 		=> "Page Options",
 	"type" 		=> "heading",
-	"icon"		=> true
+	"icon"		=> ADMIN_IMAGES . "icon-docs.png"
 );
 
 	// The settngs for the sidebar. What is returned from this option
@@ -376,6 +396,91 @@ $of_options[] = array(
 			'hidden' 			=> $url . '1col.png',
 			'pull-left' 		=> $url . '3cm.png',
 		)
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Show Breadcrumbs on all pages",
+		"desc" 		=> "Select On or off. Breadcrumbs will be displayed in all pages they are made for.",
+		"id" 		=> "show_breadcrumbs",
+		"std" 		=> 1,
+		"type" 		=> "switch"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Use Leading Text",
+		"desc" 		=> "Select ON to make the first paragraph of your posts bolder.",
+		"id" 		=> "show_leading",
+		"std" 		=> 1,
+		"type" 		=> "switch"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Show posts from same category",
+		"desc" 		=> "Select ON to show posts from same category under each single article page",
+		"id" 		=> "show_similar",
+		"std" 		=> 1,
+		"type" 		=> "switch"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Display 'Last Modified' text.",
+		"desc" 		=> "Use this to show when the article/page was lastly modified.",
+		"id" 		=> "show_modified",
+		"std" 		=> 1,
+		"type" 		=> "switch"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Display 'Current Date' text.",
+		"desc" 		=> "Use this to show the currrent day and time in single page and articles..",
+		"id" 		=> "show_date",
+		"std" 		=> 1,
+		"type" 		=> "switch"
+	);
+
+/*-----------------------------------------------------------------------------------*/
+/* Site Stylings */
+/*-----------------------------------------------------------------------------------*/
+
+$of_options[] = array( 	
+	"name" 		=> "Custom Style",
+	"type" 		=> "heading",
+	"icon"		=> ADMIN_IMAGES . "icon-paint.png"
+);
+
+	$of_options[] = array(         
+		"name" 		=> "Page Background Color",
+		"id" 		=> "color_bg",
+		"std" 		=> "#fff",
+		"type" 		=> "color"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Main Site Color",
+		"id" 		=> "color_main",
+		"std" 		=> "#1670cc",
+		"type" 		=> "color"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Link Color",
+		"id" 		=> "color_link",
+		"std" 		=> "#396a9d",
+		"type" 		=> "color"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Link Hover Color",
+		"id" 		=> "color_hover_link",
+		"std" 		=> "#264d76",
+		"type" 		=> "color"
+	);
+
+	$of_options[] = array(         
+		"name" 		=> "Menu Background Color",
+		"id" 		=> "color_menu_bg",
+		"std" 		=> "#262626",
+		"type" 		=> "color"
 	);
 
 /*-----------------------------------------------------------------------------------*/

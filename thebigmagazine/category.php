@@ -20,8 +20,8 @@ global $data;
 
 		<div id="main-content" class="col-lg-9 col-md-9">
 			<header class="page-heading entry cs2">
-				<h2>Category: <?php single_cat_title(); ?></h2>
-				<?php TBM_Print::breadcrumbs(); ?>
+				<h2>Category: <strong><?php single_cat_title(); ?></strong></h2>
+				<?php if( $data['show_breadcrumbs'] ) TBM_Print::breadcrumbs(); ?>
 			</header>	
 			<div class="js-masonry">
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

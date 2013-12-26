@@ -26,7 +26,7 @@ global $data;
 		if ( $the_query->have_posts() ) {
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post(); ?>
-				<a href="<?php the_permalink() ?>"><?php if( has_post_thumbnail() ) the_post_thumbnail( 'medium' ); ?></a>
+				<a href="<?php the_permalink() ?>" class='entry-thumbnail'><?php if( has_post_thumbnail() ) the_post_thumbnail( 'medium' ); ?></a>
 				<div class="post">
 					<header>
 						<h2 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
@@ -73,7 +73,7 @@ global $data;
 		if ( $the_query->have_posts() ) {
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post(); ?>
-				<a href="<?php the_permalink() ?>"><?php if( has_post_thumbnail() ) the_post_thumbnail( 'medium' ); ?></a>
+				<a href="<?php the_permalink() ?>" class='entry-thumbnail'><?php if( has_post_thumbnail() ) the_post_thumbnail( 'medium' ); ?></a>
 				<div class="post">
 					<header>
 						<h2 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
@@ -121,7 +121,7 @@ global $data;
 		if ( $the_query->have_posts() ) {
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post(); ?>
-				<a href="<?php the_permalink() ?>"><?php if( has_post_thumbnail() ) the_post_thumbnail( 'medium' ); ?></a>
+				<a href="<?php the_permalink() ?>" class='entry-thumbnail'><?php if( has_post_thumbnail() ) the_post_thumbnail( 'medium' ); ?></a>
 				<div class="post">
 					<header>
 						<h2 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>

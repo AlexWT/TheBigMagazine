@@ -24,9 +24,10 @@ global $data;
 			<?php
 			// Today's string
 			$today = $data['top_news_today'];
+			$limit = $data['top_news_limit'];
 
 			// Getting the most commented (active) topics this week.
-			$the_query = new WP_Query( '&orderby=comment_count');
+			$the_query = new WP_Query( '&orderby=comment_count&posts_per_page=' . $limit );
 
 			// Do the main job: print latest posts
 			if ( $the_query->have_posts() ) {
