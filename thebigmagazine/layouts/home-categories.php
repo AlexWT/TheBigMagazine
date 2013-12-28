@@ -16,8 +16,8 @@ global $data;
 
 <section class="featured-categories">
 	<header class='section-header'>
-		<h3 class="section-title"><?php echo $data['categories_title'] ?></h3>
-		<a href="#" ><?php _e('View all categories', 'thebigmag') ?></a>
+		<h3 class="section-title" data-toggle="modal" data-target="#categoriesModal"><?php echo $data['categories_title'] ?></h3>
+		<button class='btn btn-link btn-xs pull-right' data-toggle="modal" data-target="#categoriesModal"><?php _e('View all categories', 'thebigmag') ?></button>
 	</header><!-- section-header -->
 
 	<div class="section-content">
@@ -39,3 +39,27 @@ global $data;
 		</div><!-- /column -->
 	</div><!-- /section-content -->
 </section><!-- /featured categories -->
+
+<!-- Modal -->
+<div class="modal fade" id="categoriesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">All Categories</h4>
+			</div>
+			<div class="modal-body">
+				<?php 
+				// Settings for the categories list
+				$args = array(
+					"style"			=> "none",
+					"show_count"	=> 1,
+					"hide_empty" 	=> 0
+				);
+
+				// Now display the categories
+				wp_list_categories( $args ); ?>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

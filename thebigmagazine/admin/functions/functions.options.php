@@ -483,6 +483,19 @@ $of_options[] = array(
 		"type" 		=> "color"
 	);
 
+	/* WIDGET SETTINGS */
+
+	$of_options[] = array(         
+		"name" 		=> "Widget Menu Style",
+		"desc" 		=> "Select ON to use the default dark style or OFF to use the light skin.",
+		"id" 		=> "widget_menu_skin",
+		"std" 		=> "dark",
+		"type" 		=> "select",
+		"options"	=> array( 'light', 'dark' ),
+	);
+
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Backup options */
 /*-----------------------------------------------------------------------------------*/

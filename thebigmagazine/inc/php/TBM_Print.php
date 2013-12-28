@@ -283,9 +283,14 @@ class TBM_Print {
 	 * 
 	 * @since  v1.0.0
 	 */
-	public function post_thumbnail() {
+	public function post_thumbnail( $size = '' ) {
 
 		if( has_post_thumbnail() ) {
+
+			if( isset($size) ) {
+				the_post_thumbnail( $size );
+				return;
+			}
 
 			// Check if the current page need large image.
 			if( is_single() OR is_page() ) {

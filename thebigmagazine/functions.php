@@ -17,8 +17,13 @@
 // Include the Slightly Modified Options Framework
 require_once ( 'admin/index.php' );
 
+// Include the TBM Framework
 require_once ( 'inc/php/TBM_Main.php' );
 
+// Register all the widgets
+require_once ( 'inc/php/widgets/main.php' );
+
+if( ! class_exists('TBM_Functions') ) :
 class TBM_Functions {
 
 	/**
@@ -30,6 +35,9 @@ class TBM_Functions {
 
 		// Run after instalation setup.
 		$this -> theme_setup();
+
+		// Register actions using add_actions() custom function.
+    	$this -> add_actions();
 
 	}
 
@@ -57,8 +65,9 @@ class TBM_Functions {
 
 		//  Support post-thubnails as well!
 		add_theme_support( 'post-thumbnails' );
-		add_image_size( 'large', 863, 400, true ); // The slider max (and all other big images.)
-		add_image_size( 'medium', 300, 200, true ); // Default medium size
+		add_image_size( 'large', 863, 400, true ); 		// The slider max (and all other big images.)
+		add_image_size( 'medium', 300, 200, true ); 	// Default medium size
+		add_image_size( 'small', 100, 100, true );		// Small size
 
 		// Add support for custom header images
 		add_theme_support( 'custom-header' ) ;
@@ -73,9 +82,6 @@ class TBM_Functions {
 
     	// Set content width for custom media information
     	if ( ! isset( $content_width ) ) $content_width = 900;
-
-    	// Register actions using add_actions() custom function.
-    	$this->add_actions();
 
 	}
 
@@ -248,6 +254,8 @@ class TBM_Functions {
 			'after_title'   => '</h3>',
 		) );
 
+		register_widget( 'RecentPosts' );
+
 	}
 
 	/**
@@ -300,3 +308,4 @@ class TBM_Functions {
 }
 
 $TBM_Functions = new TBM_Functions;
+endif;

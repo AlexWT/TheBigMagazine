@@ -12,7 +12,7 @@ global $data;
 ?>
 
 <div id="three-categories" class='row'>
-	<div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+	<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 		<header class='section-header big'>
 			<h3 class="section-heading"><?php echo $data['three_cat_1_title'] ?></h3>
 		</header>
@@ -59,7 +59,7 @@ global $data;
 
 	</div><!-- / col end -->
 
-	<div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+	<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 		<header class='section-header big'>
 			<h3 class="section-heading"><?php echo $data['three_cat_2_title'] ?></h3>
 		</header>
@@ -107,7 +107,7 @@ global $data;
 	<!-- ======================================================================================================= -->
 	
 
-	<div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+	<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 		<header class='section-header big'>
 			<h3 class="section-heading"><?php echo $data['three_cat_3_title'] ?></h3>
 		</header>
