@@ -1146,6 +1146,10 @@ aside#sidebar .light .widget.widget_nav_menu ul.menu ul {
 	background: #333;
 	border-top: 3px solid #1670cc;
 	margin-top: 30px;
+	color: white;
+}
+
+body.custom-background #page-footer  {
 	opacity: 0.9;
 }
 
@@ -1179,6 +1183,14 @@ aside#sidebar .light .widget.widget_nav_menu ul.menu ul {
 
 #page-footer .widget_tag_cloud .tagcloud a {
 	background: #333;
+}
+
+#page-footer .widget_calendar table tbody td{
+	border-color: #333
+}
+
+#page-footer .widget_categories ul li {
+	border-bottom: 1px solid #555 !important;
 }
 
 /* Additional Styles */

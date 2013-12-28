@@ -155,6 +155,9 @@ class TBM_Functions {
 
 		// Mansonry script. Used in blog page for organizing content.
 		wp_enqueue_script( 'masonry-js', get_template_directory_uri() . '/js/masonry.pkgd.min.js' );
+
+		// My little script addings for jQuery use.
+		wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/custom.js' );
 		
 	}
 
