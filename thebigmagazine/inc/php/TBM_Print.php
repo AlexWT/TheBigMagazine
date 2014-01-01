@@ -85,7 +85,9 @@ class TBM_Print {
 			'total' => $wp_query->max_num_pages
 		);
 
+		echo "<div class='btn-group page-pagination'>";
 		echo paginate_links( $args );
+		echo "</div>";
 	}
 
 	/**
@@ -196,13 +198,10 @@ class TBM_Print {
 	 * @param bool $show_comments Display or not comments count after title.
 	 * @since  v1.0.0
 	 */
-	public function posts( $category = NULL , $limit = 3, $offset = 1, $print_ul = true, $show_comments = true ) {
+	public function posts( $category_ID = 0 , $limit = 3, $offset = 1, $print_ul = true, $show_comments = true ) {
 
 		// Get all categories or only one.
-		if( isset( $category ) )
-			$the_query = new WP_Query( 'cat=' . $category . '&posts_per_page=' . $limit . '&offset=' . $offset );
-		else 
-			$the_query = new WP_Query( 'cat=1&posts_per_page=' . $limit . '&offset=' . $offset );
+		$the_query = new WP_Query( 'cat=' . $category_ID . '&posts_per_page=' . $limit . '&offset=' . $offset );
 
 		// Print UL tag if required.
 		if( $print_ul == true )
@@ -302,7 +301,31 @@ class TBM_Print {
 			}
 
 		} // has_post_thumbnail
+		else {
+			if( $size == '' ) $size = "large";
 
+			$image_directory = get_template_directory_uri() . '/images/default_' . $size . '.png';
+			// Print the default post thumbnail
+			echo "<img src='{$image_directory}' />";
+		}
+
+	}
+
+	/**
+	 * Function to display the archives message in page - heading
+	 * 
+	 * @since v1.0.0
+	 */
+	public function archives_title() {
+		if ( is_day() ) :
+			printf( __( 'Daily Archives: <strong>%s</strong>', 'thebigmag' ), get_the_date() );
+		elseif ( is_month() ) :
+			printf( __( 'Monthly Archives: <strong>%s</strong>', 'thebigmag' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'thebigmag' ) ) );
+		elseif ( is_year() ) :
+			printf( __( 'Yearly Archives: <strong>%s</strong>', 'thebigmag' ), get_the_date( _x( 'Y', 'yearly archives date format', 'thebigmag' ) ) );
+		else :
+			_e( 'Archives', 'thebigmag' );
+		endif;
 	}
 
 

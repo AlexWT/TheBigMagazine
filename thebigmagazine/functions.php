@@ -103,6 +103,9 @@ class TBM_Functions {
 		// Register our Widgets
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 
+		// Register custom fonts used in the theme.
+		add_action('wp_print_styles', array( $this, 'load_fonts' ));
+
 		// Post title filter.
 		add_filter( "wp_title", array( $this, "page_title" ) );
 
@@ -126,26 +129,14 @@ class TBM_Functions {
 
 		// Include Bootstrap css/js framework.
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/css/bootstrap.min.css', array() );
-		wp_enqueue_style( 'bootstrap' );
-
-		// The icons from font-awesome.
-		// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array() );
-		// wp_enqueue_style( 'font-awesome' );
 
 		wp_enqueue_style( 'font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array() );
-		wp_enqueue_style( 'font-awesome' );
 
 		// Get the main stylesheet for the theme.
 		wp_enqueue_style( 'stylesheet', get_stylesheet_uri(), array(), '2013-10-18' );
-		wp_enqueue_style( 'stylesheet' );
 
 		// Get the main stylesheet for the theme.
 		wp_enqueue_style( 'dynamic', get_template_directory_uri() . '/dynamic.css.php', array(), '2013-10-18' );
-		wp_enqueue_style( 'dynamic' );
-
-		// Include the main font used - source sans pro
-		wp_enqueue_style( 'font', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700', array());
-		wp_enqueue_style( 'font' );
 
 		// Include jQuery from WP Core
 		wp_enqueue_script( "jquery" );
@@ -196,9 +187,9 @@ class TBM_Functions {
 		) );
 
 		register_sidebar( array(
-			'name'          => __( 'Single page sidebar', 'thebigmag' ),
-			'id'            => 'sidebar-single',
-			'description'   => __( 'Appears on single post page', 'thebigmag' ),
+			'name'          => __( 'Home Page Widget Area 2', 'thebigmag' ),
+			'id'            => 'sidebar-2',
+			'description'   => __( 'Widget area, located right of the recent posts list. It is very narrow, so be careful with the widgets you use!', 'thebigmag' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h3 class="widget-title">',
@@ -206,9 +197,9 @@ class TBM_Functions {
 		) );
 
 		register_sidebar( array(
-			'name'          => __( 'Home Page Widget Area 2', 'thebigmag' ),
-			'id'            => 'sidebar-latestPosts',
-			'description'   => __( 'Widget area, located right of the recent posts list. It is very narrow, so be careful with the widgets you use!', 'thebigmag' ),
+			'name'          => __( 'Single page sidebar', 'thebigmag' ),
+			'id'            => 'sidebar-single',
+			'description'   => __( 'Appears on single post page', 'thebigmag' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h3 class="widget-title">',
@@ -259,6 +250,18 @@ class TBM_Functions {
 
 		register_widget( 'RecentPosts' );
 
+	}
+
+	/**
+	 * Register fonts used in the theme. It is better to include them
+	 * from this file instead from hardcoding in header.php
+	 * 
+	 * @package The Big Magazine
+	 * @since  v1.0.0
+	 */
+	public function load_fonts() {
+		wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+		wp_enqueue_style( 'googleFonts');
 	}
 
 	/**

@@ -18,7 +18,8 @@ nav#page-navigation ul.nav li a:hover,
 .search-section .searchform input, .search-section .searchform button,
 aside#single-sidebar .widget.widget_recent_entries ul li a:hover,
 #page-footer .widget ul li a:hover,
-aside#sidebar .widget.widget_nav_menu ul.menu li a:hover { background: <?php echo $data['color_main'] ?> }
+aside#sidebar .widget.widget_nav_menu ul.menu li a:hover,
+aside.latest-posts-sidebar .widget-title { background: <?php echo $data['color_main'] ?> }
 
 .news-wrapper {	border-top: 8px solid <?php echo $data['color_main'] ?> }
 .section-heading,

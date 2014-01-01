@@ -29,10 +29,12 @@
 		<?php 
 		if( is_single() OR is_page() ) {
 			the_content();
+			TBM_Print::pagination();
 		} else {
 			the_excerpt(); 
 		}
 		?>
+
 	</div><!-- /entry-content -->
 
 </article><!-- #post -->

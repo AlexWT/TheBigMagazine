@@ -42,6 +42,7 @@ $hidden =  $data['single-page-layout'] == 'hidden' ? true : false;
 
 		<div class="entry-content <?php if($data['show_leading']) echo "leading" ?>">
 			<?php the_content(); ?>
+			<?php wp_link_pages() ?>
 		</div><!-- /entry-content -->
 
 		<footer class="entry-info">

@@ -56,11 +56,13 @@ $featured_category = strtolower( $data['featured1_category'] );
 					/* Restore original Post Data */
 					wp_reset_postdata();
 
+					$cat_ID = get_cat_ID( $featured_category );
+
 					?>
 					
 				</div><!-- /featured post -->
 			<aside class="similar-posts col-lg-3 col-md-3 col-sm-3">
-				<?php TBM_Print::posts( $featured_category, $data['featured1_limit'] ); ?>
+				<?php TBM_Print::posts( $cat_ID, $data['featured1_limit'] ); ?>
 			</aside><!-- /simillar posts -->
 		</div><!-- /section-content -->
 	</section><!-- /category-1 -->

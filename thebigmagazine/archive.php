@@ -1,7 +1,7 @@
 <?php
 /**
- * Category page
- *
+ * Archives page
+ * 
  * @package  WellThemes
  * @author   Well Themes Team
  * @link 	 http://wellthemes.com
@@ -20,10 +20,10 @@ global $data;
 
 		<div id="main-content" class="col-lg-9 col-md-9">
 			<header class="page-heading entry cs2">
-				<h2>Category: <strong><?php single_cat_title(); ?></strong></h2>
+				<h2><?php TBM_Print::archives_title(); ?></strong></h2>
 				<?php if( $data['show_breadcrumbs'] ) TBM_Print::breadcrumbs(); ?>
 			</header>	
-			<div class="js-masonry">
+			<div class="js-masonry">	
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part('content'); ?>
 				<?php endwhile; ?>

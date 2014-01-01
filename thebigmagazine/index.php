@@ -24,7 +24,14 @@
 		get_template_part( 'layouts/home', 'category1' ); ?>
 
 	<?php get_template_part( 'layouts/home', 'threeCategories' ); ?>
-	<?php get_template_part( 'layouts/home', 'latestPosts' ); ?>
+
+	<div class="row">
+		<?php get_template_part( 'layouts/home', 'latestPosts' ); ?>
+		<aside class="latest-posts-sidebar col-lg-3">
+			<?php get_sidebar('2'); ?>
+		</aside>
+	</div><!-- /row -->
+
 </div><!-- /main-content -->
 
 <?php get_footer(); ?>

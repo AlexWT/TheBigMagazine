@@ -88,28 +88,28 @@ class TBM_Breadcrumb {
 
 		}
 
-		if( is_tag() ) { 
-			echo __("Tag: ", "thebigmag") . single_tag_title( '', FALSE ); 
+		if ( is_tag() ) { 
+			echo 'Tags' . $this->separator;
+			echo single_tag_title( '', FALSE ); 
+		} 
+		elseif ( is_archive() ) {
+			echo __("Archives", "thebigmag") . $this->separator;
+			the_date();
 		}
-
-		if( is_404() ) { 
-			echo __("404 - Page Not Found", "thebigmag"); 
-		}
-
-		if( is_author() ) {
+		elseif ( is_author() ) {
 			$curauth = get_userdata(get_query_var('author'));
 			echo $curauth->display_name;
 		}
-
-		if( is_year() ) {
+		elseif ( is_404() ) { 
+			echo __("404 - Page Not Found", "thebigmag"); 
+		}
+		elseif ( is_year() ) {
 			echo get_the_time('Y');
 		}
-
-		if( is_page() ) {
+		elseif ( is_page() ) {
 			the_title();
 		}
-
-		if( is_search() ) {
+		elseif ( is_search() ) {
 			$output = "Search" . $this->separator;
 			echo $output . get_query_var('s');
 		}
