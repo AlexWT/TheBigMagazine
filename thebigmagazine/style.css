@@ -87,6 +87,10 @@ img {
 	height: auto;
 }
 
+q {
+	font-style: italic;
+}
+
 
 
 /* WORDPRESS STYLES */
@@ -111,6 +115,12 @@ img {
 ::selection {
 	color: white;
 	background: #000;
+}
+
+.wp-caption-text {
+	font-size: 12px;
+	font-family: "Source Sans Pro";
+	color: #888;
 }
 
 /**
@@ -684,6 +694,38 @@ section.category-1 .featured-post .post-thumbnail:hover {
 	display: block;
 }
 
+.entry .entry-content table {
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+.entry .entry-content table thead > tr > th,
+.entry .entry-content table tbody > tr > th,
+.entry .entry-content table tfoot > tr > th,
+.entry .entry-content table thead > tr > td,
+.entry .entry-content table tbody > tr > td,
+.entry .entry-content table tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.8;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+.entry .entry-content table thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
+.entry .entry-content table caption + thead tr:first-child th,
+.entry .entry-content table colgroup + thead tr:first-child th,
+.entry .entry-content table thead:first-child tr:first-child th,
+.entry .entry-content table caption + thead tr:first-child td,
+.entry .entry-content table colgroup + thead tr:first-child td,
+.entry .entry-content table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+.entry .entry-content table tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
 /* BLOG PAGE ENTRY */
 #main-content .entry {
 	margin-bottom: 0px;
@@ -720,7 +762,7 @@ section.category-1 .featured-post .post-thumbnail:hover {
 
 #main-content .entry img,
 .wp-caption {
-	width: 100%;
+	max-width: 100% !important;
 	height: auto;
 }
 
@@ -809,6 +851,7 @@ body.search .entry .entry-title {
 #comments .comment-response {}
 #comments .nocomments { font-weight: bold; }
 #comments .comment-awaiting-moderation { font-style: normal; font-size: 12px; font-weight: bold }
+#comments .comment-author a { font-weight: bold }
 
 #comments .comment-reply-link:before {
 	font-family: FontAwesome;
@@ -1475,6 +1518,26 @@ body.custom-background #page-footer  {
 		width: 70%;
 		margin: 0 auto;
 	}
+
+	.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    border: 1px solid #dddddd;
+  }
+  .entry .entry-content table {
+    margin-bottom: 0;
+    background-color: #fff;
+  }
+  .entry .entry-content table > thead > tr > th,
+  .entry .entry-content table > tbody > tr > th,
+  .entry .entry-content table > tfoot > tr > th,
+  .entry .entry-content table > thead > tr > td,
+  .entry .entry-content table > tbody > tr > td,
+  .entry .entry-content table > tfoot > tr > td {
+    white-space: nowrap;
+  }
 
 }
  

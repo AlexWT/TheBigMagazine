@@ -39,14 +39,15 @@ $hidden =  $data['single-page-layout'] == 'hidden' ? true : false;
 			<span class="comments"><a href="<?php comments_link(); ?>"><?php comments_number('(No Comments)', '(One Comment)', '(% Comments)' );?></a></span>
 			<div class="entry-thumbnail"><?php TBM_Print::post_thumbnail(); ?></div>
 		</header>
-
-		<div class="entry-content <?php if($data['show_leading']) echo "leading" ?>">
+		
+		<div class="entry-content">
 			<?php the_content(); ?>
 			<?php wp_link_pages() ?>
 		</div><!-- /entry-content -->
 
 		<footer class="entry-info">
-			<?php the_tags('<span>Tags: </span>',', ','<br />'); ?>
+			<?php the_tags( '<strong>Tags: </strong>',', ','<br />' ); ?>
+			<strong>Categories: </strong><?php the_category( ', ' ); ?>
 			
 			<div class='titles'>
 				<h5 class='pull-left'>Previous article:</h5>

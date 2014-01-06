@@ -53,9 +53,9 @@ global $data;
 		</section><!-- /heading -->
 	</header><!-- /page-header -->
 
-	<nav id="page-navigation" class="navbar navbar-default" role="navigation">
+	<nav id="page-navigation" class="navbar navbar-default " role="navigation">
 		<!-- PAGE NAVIGATION -->
-		<section class="container">
+		<section class="container ">
 				<?php wp_nav_menu( array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'mastheadnav dropdown', 'items_wrap' => '<ul class="nav navbar-nav col-lg-12">%3$s' )); ?>
 		</section><!-- /container -->
 	</nav><!-- /navigation -->

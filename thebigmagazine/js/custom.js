@@ -14,13 +14,13 @@ jQuery(document).ready(function($) {
 
 	// js Add the sticky menu
 	// -----------------------------------------------------------------------------
-	var $header = $("nav#page-navigation"),
-	$clone = $header.before($header.clone().addClass("clone"));
+	// var $header = $("nav#page-navigation"),
+	// $clone = $header.before($header.clone().addClass("clone"));
 
-	$(window).on("scroll", function() {
-		var fromTop = $(window).scrollTop();
-		console.log(fromTop);
-		$("body").toggleClass("down", (fromTop > 200));
-	});
+	// $(window).on("scroll", function() {
+	// 	var fromTop = $(window).scrollTop();
+	// 	console.log(fromTop);
+	// 	$("body").toggleClass("down", (fromTop > 200));
+	// });
 
 });

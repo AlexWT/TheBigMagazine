@@ -71,10 +71,8 @@ class TBM_Breadcrumb {
 
 			// Print the post title, no link is required.
 			the_title();
-		}
-
-		// Now the checks for the page starts.
-		if( is_category() ) {
+		} 
+		elseif( is_category() ) {
 			$category = get_the_category();
 			$category_first = $category[0]->cat_ID;
 			$category_parent = $category[0]->category_parent;
@@ -87,8 +85,7 @@ class TBM_Breadcrumb {
 			echo single_cat_title( '', TRUE );
 
 		}
-
-		if ( is_tag() ) { 
+		elseif ( is_tag() ) { 
 			echo 'Tags' . $this->separator;
 			echo single_tag_title( '', FALSE ); 
 		} 
